@@ -49,10 +49,12 @@ La conversion est directe avec une licence PRO : les `render.php` restent identi
 2. Copier `.env.example` → `.env`, renseigner `DB_*`, `WP_HOME` et `WP_SITEURL`
 3. Créer une base vide
 
+> **Fichiers non versionnés** — `db_test.sql` et `uploads.zip` ne sont pas inclus dans ce dépôt Git (taille + données). Téléchargez-les séparément et placez-les à la racine du projet avant de continuer.
+
 **Option A — voir le rendu tel quel** (recommandé)
 
-4. Importer `dr-polle.sql` (fourni) dans la base
-5. Décompresser `uploads.zip` (fourni) dans `web/app/uploads/`
+4. Importer `db_test.sql` dans la base MySQL
+5. Décompresser `uploads.zip` dans `web/app/uploads/`
 6. Ouvrir le site : la page d'accueil s'affiche complète
 
 **Option B — repartir de zéro**
