@@ -1,87 +1,82 @@
-# dr-polle — Thème WordPress (test technique)
+# dr-polle — WordPress Theme (Technical Test)
 
-Intégration de la maquette fournie (desktop + mobile) sous **Bedrock**, avec un custom post type, une taxonomie, des champs ACF déclarés en code et 5 blocs Gutenberg à rendu dynamique.
-
-Les **5 premières sections** de la maquette sont développées sous forme de blocs éditables depuis l'administration ; les sections suivantes reposent sur la même logique.
+Integration of the provided mockup (desktop + mobile) using **Bedrock**, with a custom post type, a taxonomy, ACF fields declared in code, and 5 dynamically rendered Gutenberg blocks.
 
 ## Stack
 
-- **WordPress 7.0.4** sur [Bedrock](https://roots.io/bedrock/) — PHP 8.1+
-- **ACF** — tous les champs déclarés en code via [`stoutlogic/acf-builder`](https://github.com/StoutLogic/acf-builder), **aucun champ créé en back-office**
-- **Blocs Gutenberg natifs** — `block.json` apiVersion 3, rendu serveur (`render.php`)
+- **WordPress 6.x** on [Bedrock](https://roots.io/bedrock/) — PHP 8.1+
+- **ACF** — all fields declared in code via [`stoutlogic/acf-builder`](https://github.com/StoutLogic/acf-builder), no fields created in the admin UI
+- **Native Gutenberg blocks** — `block.json` apiVersion 3, server-side rendering (`render.php`)
 
-## Ce qui a été développé
+## What Was Built
 
-**Contenu** — CPT `chirurgie` + taxonomie `type_chirurgie` (réparatrice / ciblée), tous deux exposés en REST.
+**Content** — CPT `chirurgie` + taxonomy `type_chirurgie` (réparatrice / ciblée), both exposed via REST API.
 
-**Champs ACF** (`app/Fields/`, acf-builder) :
+**ACF Fields** (`app/Fields/`, acf-builder):
 
-| Groupe | Champs | Location |
+| Group | Fields | Location |
 |---|---|---|
-| `chirurgie_fields` | Texte de carte, Contenu | `post_type == chirurgie` |
-| `landing_page_fields` | Logo, Téléphone, Bouton de contact | `page_type == front_page` |
+| `chirurgie_fields` | Card text, Content | `post_type == chirurgie` |
+| `landing_page_fields` | Logo, Phone, Contact button | `page_type == front_page` |
 
-**5 blocs** (catégorie « dr polle » dans l'éditeur). Chaque bloc porte ses propres champs de configuration, isolés dans le panneau latéral — aucun bloc ne lit la configuration d'un autre :
+**5 Blocks** (category "dr polle" in the editor). Each block carries its own configuration fields, isolated in the sidebar panel — no block reads another block's configuration:
 
-| Bloc | Rôle | Configuration |
+| Block | Role | Config |
 |---|---|---|
-| Hero | Titre, texte, boutons, images desktop/mobile, barre de recherche | 11 champs |
-| Introduction | Texte + image (équipe, accompagnement premium) | 10 champs, image gauche/droite |
-| Bandeau | Phrase centrée avec mots surlignés | 1 champ |
-| Grille de chirurgies | Grille filtrée par type + slider tactile en mobile | 6 champs, dont le nombre de fiches |
-| Chirurgies ciblées | 2 chirurgies en colonnes gauche / droite | 5 champs |
+| Hero | Title, text, buttons, desktop/mobile images, search bar | 11 fields |
+| Introduction | Text + image (team, premium care) | 10 fields, left/right image |
+| Bandeau | Centered sentence with highlighted words | 1 field |
+| Surgery Grid | Grid filtered by type + touch slider on mobile | 6 fields incl. card count |
+| Targeted Surgeries | 2 surgeries in left/right columns | 5 fields |
 
-Les blocs interrogent le CPT via `WP_Query` filtrée sur la taxonomie : ajouter une fiche en back-office la fait apparaître automatiquement en front, sans toucher au code.
+Blocks query the CPT via `WP_Query` filtered on the taxonomy: adding a post in the admin automatically surfaces it on the front end without touching code.
 
-**Front-end** — header + menu mobile off-canvas (accordéon à sous-menus), slider tactile sous 992px, intégration responsive fidèle à la maquette (4 breakpoints).
+**Front-end** — header + off-canvas mobile menu (accordion with sub-menus), touch slider under 992px, responsive integration across 4 breakpoints.
 
-## Écart assumé par rapport à l'énoncé
+## Note on ACF Blocks
 
-La tâche 4 demande des blocs via **ACF Blocks**. Après vérification, ACF Blocks est une fonctionnalité exclusive d'**ACF PRO**, dont la licence n'était pas fournie avec le test. J'ai donc implémenté l'équivalent fonctionnel en blocs natifs à rendu serveur, ce qui respecte la contrainte de rendu dynamique et l'isolation des champs de configuration par bloc (tâches 4 et 5).
-
-La conversion est directe avec une licence PRO : les `render.php` restent identiques à `$attributes['x']` → `get_field('x')` près, et chaque `edit.js` est remplacé par un groupe acf-builder avec `->setLocation('block', '==', 'acf/hero')`.
+Task 4 requested **ACF Blocks**, which is an **ACF PRO**-exclusive feature. Since no PRO license was provided, the equivalent was implemented using native server-rendered blocks. The conversion is straightforward with a PRO license: `render.php` files stay identical (`$attributes['x']` → `get_field('x')`), and each `edit.js` is replaced by an acf-builder group with `->setLocation('block', '==', 'acf/hero')`.
 
 ## Installation
 
-**Prérequis** : PHP 8.1+, Composer, MySQL, un serveur local (XAMPP, Laragon…).
+**Requirements**: PHP 8.1+, Composer, MySQL, a local server (XAMPP, Laragon…).
 
-1. `composer install` à la racine
-2. Copier `.env.example` → `.env`, renseigner `DB_*`, `WP_HOME` et `WP_SITEURL`
-3. Créer une base vide
+```bash
+composer install
+cp .env.example .env   # fill in DB_*, WP_HOME, WP_SITEURL
+```
 
-> **Fichiers non versionnés** — `db_test.sql` et `uploads.zip` ne sont pas inclus dans ce dépôt Git (taille + données). Téléchargez-les séparément et placez-les à la racine du projet avant de continuer.
+### Option A — Preview as-is (recommended)
 
-**Option A — voir le rendu tel quel** (recommandé)
+1. Create an empty database
+2. Import `db_test.sql` into it
+3. Extract `uploads.zip` into `web/app/uploads/`
+4. Open the site — the homepage renders fully
 
-4. Importer `db_test.sql` dans la base MySQL
-5. Décompresser `uploads.zip` dans `web/app/uploads/`
-6. Ouvrir le site : la page d'accueil s'affiche complète
+### Option B — Start from scratch
 
-**Option B — repartir de zéro**
+1. Create an empty database and run `web/wp/wp-admin/install.php`
+2. Activate the **Advanced Custom Fields** plugin and the **dr-polle** theme
+3. Edit the homepage and add blocks from the "dr polle" category
+4. To test dynamic rendering: **Surgeries → Add New**, fill in the card text, pick a **Surgery Type**, set a featured image — the card appears in the matching block on the homepage automatically
 
-4. Lancer `web/wp/wp-admin/install.php`
-5. Activer le plugin **Advanced Custom Fields** et le thème **dr-polle**
-6. Éditer la page d'accueil et ajouter les blocs de la catégorie « dr polle »
-7. Pour vérifier le rendu dynamique : **Chirurgies → Ajouter**, renseigner le texte de carte, choisir un **Type de chirurgie**, définir une image mise en avant — la fiche apparaît dans le bloc correspondant sur l'accueil
-
-## Structure
+## Project Structure
 
 ```
 web/app/themes/dr-polle/
-├── app/                    # Classes PHP — PSR-4, namespace App\
+├── app/                    # PHP classes — PSR-4, namespace App\
 │   ├── PostTypes/          # CPT chirurgie
-│   ├── Taxonomies/         # Taxonomie type_chirurgie
-│   ├── Fields/             # Groupes ACF (acf-builder)
-│   └── Blocks/             # Enregistrement des blocs
-├── blocks/<bloc>/          # block.json · edit.js · render.php
+│   ├── Taxonomies/         # Taxonomy type_chirurgie
+│   ├── Fields/             # ACF groups (acf-builder)
+│   └── Blocks/             # Block registration
+├── blocks/<block>/         # block.json · edit.js · render.php
 ├── assets/
 │   ├── fonts/gilroy/       # Gilroy Light + ExtraBold
-│   └── js/main.js          # Menu mobile off-canvas
+│   └── js/main.js          # Off-canvas mobile menu
 ├── header.php · footer.php · index.php · page.php
 └── style.css
 ```
 
-## Limites connues
+## Known Limitations
 
-Le périmètre a été volontairement resserré sur les tâches de l'énoncé. Le menu mobile reproduit la structure de la maquette en statique et n'est pas encore branché sur `wp_nav_menu()`. Les fiches « Chirurgie » n'ont pas de template dédié (`single-chirurgie.php`), le champ `contenu` n'est donc pas encore affiché.
-
+Scope was intentionally kept to the tasks in the brief. The mobile menu reproduces the mockup structure statically and is not yet wired to `wp_nav_menu()`. Surgery posts have no dedicated template (`single-chirurgie.php`), so the `content` field is not yet rendered on the single post view.
