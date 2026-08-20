@@ -136,10 +136,12 @@ section {
   display: block;
 }
 
-html,
+html {
+  overflow-x: clip;
+}
+
 body {
   line-height: 1;
-  overflow-x: hidden;
 }
 
 a,
@@ -177,7 +179,6 @@ body {
   color: #ffffff;
   font-size: 16px;
   max-width: 100%;
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -213,6 +214,7 @@ section {
 .container {
   width: min(100% - 24px * 2, 1236PX);
   margin-inline: auto;
+  
 }
 
 @media (max-width: 1200px) {
@@ -235,6 +237,8 @@ section {
 @media (max-width: 768px) {
   .container {
     width: min(100% - 24px * 2, 576px);
+      margin-inline: 0px;
+      width: 100%;
   }
 }
 
@@ -407,6 +411,9 @@ section {
 }
 
 @media (max-width: 576px) {
+  .header .logo img {
+    height: 23px;
+  }
   .header .buttons .contact {
     display: none;
   }
@@ -480,8 +487,8 @@ section {
 .hero .container .right .hero_image {
   position: absolute;
   top: -20px;
-  right: -150px;
-  height: 145%;
+  right: -190px;
+    height: 140%;
   max-width: none;
 }
 
@@ -605,7 +612,6 @@ section {
   .hero .container {
     flex-direction: column;
     width: 100%;
-    margin-inline: 0px;
   }
 
   .hero .container .left {
@@ -764,14 +770,14 @@ section {
 
 @media (max-width: 992px) {
   .introduction .intro {
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin-bottom: 0px;
   }
 
   .introduction .intro .text_container {
+    order: 1;
     width: 100%;
-    padding-left: 0px;
-    padding: 20px;
+    padding: 20px 0px;
   }
 
   .introduction .intro .text_container h2 {
@@ -779,6 +785,7 @@ section {
   }
 
   .introduction .intro .image_container {
+    order: 2;
     width: 100%;
   }
 
@@ -787,7 +794,6 @@ section {
   }
 
   .introduction .intro.intro2 {
-    flex-direction: column;
     margin-top: 0px;
   }
 
@@ -1190,6 +1196,7 @@ section {
 @media (max-width: 576px) {
   .chirurgies_reparatrices {
     padding-bottom: 30px;
+    overflow-x: hidden;
   }
 
   .chirurgies_reparatrices .desc {

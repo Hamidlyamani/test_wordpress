@@ -77,10 +77,4 @@ web/app/themes/dr-polle/
 └── style.css
 ```
 
-## Limites connues
 
-- Le menu mobile reproduit la structure de la maquette en statique ; il n'est pas encore branché sur `wp_nav_menu()` (le menu `primary` est déclaré mais non utilisé).
-- Pas de template `single-chirurgie.php` : les fiches individuelles utilisent `index.php`, et le champ ACF `contenu` n'est donc pas encore affiché.
-- Les termes de la taxonomie sont proposés en liste fixe dans les blocs ; un nouveau terme créé en back-office ne remonte pas encore dans le sélecteur.
-- Le CSS du thème n'est pas chargé dans l'éditeur (`add_editor_style()` non appelé) : l'aperçu des blocs y est donc non stylé.
-- Les icônes décoratives sont référencées via `wp_upload_dir()` avec un chemin de dossier fixe (`2026/08/`) — portable entre environnements, mais dépendant de l'import du dossier `uploads` fourni.
