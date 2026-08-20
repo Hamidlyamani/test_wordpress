@@ -1,6 +1,8 @@
 # dr-polle — Thème WordPress (test technique)
 
-Intégration de la maquette fournie (desktop + mobile) sous **Bedrock**, avec un custom post type, une taxonomie, des champs ACF déclarés en code et 5 blocs Gutenberg à rendu dynamique pour composer la page d'accueil depuis l'administration.
+Intégration de la maquette fournie (desktop + mobile) sous **Bedrock**, avec un custom post type, une taxonomie, des champs ACF déclarés en code et 5 blocs Gutenberg à rendu dynamique.
+
+Les **5 premières sections** de la maquette sont développées sous forme de blocs éditables depuis l'administration ; les sections suivantes reposent sur la même logique.
 
 ## Stack
 
@@ -35,7 +37,7 @@ Les blocs interrogent le CPT via `WP_Query` filtrée sur la taxonomie : ajouter 
 
 ## Écart assumé par rapport à l'énoncé
 
-La tâche 4 demande des blocs via **ACF Blocks**. ACF Blocks est une fonctionnalité exclusive d'**ACF PRO**, dont la licence n'était pas fournie avec le test. J'ai donc implémenté l'équivalent fonctionnel en blocs natifs à rendu serveur, ce qui respecte la contrainte de rendu dynamique et l'isolation des champs de configuration par bloc (tâches 4 et 5).
+La tâche 4 demande des blocs via **ACF Blocks**. Après vérification, ACF Blocks est une fonctionnalité exclusive d'**ACF PRO**, dont la licence n'était pas fournie avec le test. J'ai donc implémenté l'équivalent fonctionnel en blocs natifs à rendu serveur, ce qui respecte la contrainte de rendu dynamique et l'isolation des champs de configuration par bloc (tâches 4 et 5).
 
 La conversion est directe avec une licence PRO : les `render.php` restent identiques à `$attributes['x']` → `get_field('x')` près, et chaque `edit.js` est remplacé par un groupe acf-builder avec `->setLocation('block', '==', 'acf/hero')`.
 
@@ -77,4 +79,7 @@ web/app/themes/dr-polle/
 └── style.css
 ```
 
+## Limites connues
+
+Le périmètre a été volontairement resserré sur les tâches de l'énoncé. Le menu mobile reproduit la structure de la maquette en statique et n'est pas encore branché sur `wp_nav_menu()`. Les fiches « Chirurgie » n'ont pas de template dédié (`single-chirurgie.php`), le champ `contenu` n'est donc pas encore affiché.
 
