@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dr-polle/introduction",
+	"title": "Introduction (texte + image)",
+	"category": "dr-polle",
+	"icon": "columns",
+	"description": "Bloc .introduction .intro : sert pour 'équipe expérimentée' et 'accompagnement premium'.",
+	"keywords": ["introduction", "equipe", "accompagnement"],
+	"textdomain": "dr-polle",
+	"supports": { "html": false },
+	"attributes": {
+		"titre": { "type": "string", "default": "" },
+		"titre_accent": { "type": "string", "default": "" },
+		"sous_titre": { "type": "string", "default": "" },
+		"texte": { "type": "string", "default": "" },
+		"lien_texte": { "type": "string", "default": "En savoir plus" },
+		"lien_url": { "type": "string", "default": "" },
+		"image_id": { "type": "number", "default": 0 },
+		"image_url": { "type": "string", "default": "" },
+		"position_image": { "type": "string", "default": "gauche" },
+		"intro2": { "type": "boolean", "default": false }
+	},
+	"editorScript": "dr-polle-introduction-editor",
+	"render": "file:./render.php"
+}

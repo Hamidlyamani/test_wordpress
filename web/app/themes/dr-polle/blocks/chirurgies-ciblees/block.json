@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dr-polle/chirurgies-ciblees",
+	"title": "Chirurgies ciblées (2 colonnes)",
+	"category": "dr-polle",
+	"icon": "align-wide",
+	"description": "Correspond à .targeted_surgeries : 2 chirurgies mises en avant, en colonnes gauche/droite.",
+	"keywords": ["chirurgie", "cible", "prothese"],
+	"textdomain": "dr-polle",
+	"supports": { "html": false, "multiple": false },
+	"attributes": {
+		"type_chirurgie": { "type": "string", "default": "ciblee" },
+		"titre": { "type": "string", "default": "Les chirurgies réparatrices ciblées" },
+		"texte": { "type": "string", "default": "" },
+		"lien_texte": { "type": "string", "default": "En savoir plus" },
+		"lien_url": { "type": "string", "default": "" }
+	},
+	"editorScript": "dr-polle-chirurgies-ciblees-editor",
+	"render": "file:./render.php"
+}

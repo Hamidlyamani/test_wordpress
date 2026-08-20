@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dr-polle/hero",
+	"title": "Hero",
+	"category": "dr-polle",
+	"icon": "cover-image",
+	"description": "Section hero de la page d'accueil : titre, texte, CTA, image et barre de recherche.",
+	"keywords": ["hero", "accueil"],
+	"textdomain": "dr-polle",
+	"supports": {
+		"html": false,
+		"multiple": false
+	},
+	"attributes": {
+		"titre": { "type": "string", "default": "Notre vocation, votre motricité" },
+		"sous_titre": { "type": "string", "default": "Pathologies & chirurgies : Genou, cheville et pied" },
+		"texte": { "type": "string", "default": "" },
+		"lien_texte": { "type": "string", "default": "En savoir plus" },
+		"lien_url": { "type": "string", "default": "" },
+		"rdv_texte": { "type": "string", "default": "Prendre rendez-vous" },
+		"rdv_url": { "type": "string", "default": "" },
+		"image_id": { "type": "number", "default": 0 },
+		"image_url": { "type": "string", "default": "" },
+		"image_mobile_id": { "type": "number", "default": 0 },
+		"image_mobile_url": { "type": "string", "default": "" },
+		"recherche_placeholder": { "type": "string", "default": "Rechercher un acte, une intervention, une pathologie, ...." }
+	},
+	"editorScript": "dr-polle-hero-editor",
+	"render": "file:./render.php"
+}

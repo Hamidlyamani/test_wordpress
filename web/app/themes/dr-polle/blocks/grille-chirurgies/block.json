@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dr-polle/grille-chirurgies",
+	"title": "Grille de chirurgies",
+	"category": "dr-polle",
+	"icon": "heart",
+	"description": "Affiche une grille de chirurgies (CPT chirurgie) filtrée par type via la taxonomie type_chirurgie. Correspond à .chirurgies_reparatrices (cartes à survol).",
+	"keywords": ["chirurgie", "grille", "taxonomie"],
+	"textdomain": "dr-polle",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"type_chirurgie": {
+			"type": "string",
+			"default": "reparatrice"
+		},
+		"titre": {
+			"type": "string",
+			"default": "Les chirurgies réparatrices"
+		},
+		"texte": {
+			"type": "string",
+			"default": ""
+		},
+		"lien_texte": {
+			"type": "string",
+			"default": "En savoir plus"
+		},
+		"lien_url": {
+			"type": "string",
+			"default": ""
+		},
+		"nombre": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"editorScript": "dr-polle-grille-chirurgies-editor",
+	"viewScript": "dr-polle-grille-chirurgies-view",
+	"render": "file:./render.php"
+}

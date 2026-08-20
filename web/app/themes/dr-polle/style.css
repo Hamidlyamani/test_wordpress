@@ -1,0 +1,1638 @@
+/*!
+Theme Name: dr polle
+Author: dr polle
+Description: Theme for the technical test (Bedrock + ACF + ACF Blocks).
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: dr-polle
+*/
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/gilroy/Gilroy-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/gilroy/Gilroy-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+html,
+body {
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+a,
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Gilroy", sans-serif;
+  background-color: #020202;
+  color: #ffffff;
+  font-size: 16px;
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.page {
+  max-width: 100%;
+  width: 100%;
+}
+
+.red {
+  color: #B40400;
+}
+
+.page {
+  position: relative;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(187, 187, 187, 0.1215686275);
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+section {
+  padding-block: 40px;
+}
+
+.container {
+  width: min(100% - 24px * 2, 1236PX);
+  margin-inline: auto;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: min(100% - 24px * 2, 990px);
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: min(100% - 24px * 2, 780px);
+    padding-inline: 20px;
+  }
+
+  section {
+    padding-block: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 24px * 2, 576px);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+  padding: 23px 40px;
+  font-size: 18px;
+  font-weight: 800;
+  position: relative;
+}
+
+.btn::after {
+  content: url("../../uploads/2026/08/c_button.png");
+  display: block;
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0px;
+}
+
+.btn::before {
+  content: url("../../uploads/2026/08/Arrow_button.png");
+  display: block;
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-70%);
+  right: 5px;
+  filter: brightness(0) invert(1);
+}
+
+.header {
+  padding: 24px;
+  padding-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .menu_phone {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+  flex: 1;
+}
+
+.header .menu_phone .menu_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.header .menu_phone .menu_toggle span {
+  font-weight: 800;
+  text-transform: lowercase;
+}
+
+.header .menu_phone .tell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header .menu_phone .tell span {
+  font-weight: 800;
+  text-transform: lowercase;
+}
+
+.header .logo {
+  flex: 1;
+  text-align: center;
+}
+
+.header .logo img {
+  max-width: 400px;
+  height: 55px;
+}
+
+.header .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 16px;
+  flex: 1;
+}
+
+.header .buttons .search {
+  background: #B40400;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .buttons .contact {
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  padding: 16px 25px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 0.25em;
+  position: relative;
+}
+
+.header .buttons .contact::before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: #B40400;
+  position: absolute;
+  top: 50%;
+  right: -35px;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1200px) {
+  .header .logo img {
+    max-width: 250px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header .logo img {
+    max-width: 183px;
+  }
+
+  .header .buttons .search {
+    display: none;
+  }
+
+  .header .buttons .contact {
+    padding: 10px 16px;
+  }
+
+  .header .menu_phone {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .menu_phone .menu_toggle span {
+    display: none;
+  }
+
+  .header .menu_phone .tell {
+    display: none;
+  }
+
+  .header .buttons {
+    justify-content: end;
+  }
+
+  .header .buttons .contact {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header .buttons .contact {
+    display: none;
+  }
+}
+
+.hero {
+  position: relative;
+  padding-top: 0px;
+  overflow: hidden;
+}
+
+.hero .slogen {
+  display: flex;
+  justify-content: center;
+}
+
+.hero .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.hero .container .left {
+  width: 70%;
+  margin-top: 120px;
+}
+
+.hero .container .left h1 {
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.hero .container .left h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.hero .container .left h3::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 4px;
+  background-color: #B40400;
+  bottom: -30px;
+  left: 0;
+}
+
+.hero .container .left p {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 30px;
+  padding-right: 120px;
+  text-align: start;
+}
+
+.hero .container .left .btn.mobile {
+  display: none;
+}
+
+.hero .container .right {
+  position: relative;
+  width: 30%;
+}
+
+.hero .container .right .hero_image {
+  position: absolute;
+  top: -20px;
+  right: -150px;
+  height: 145%;
+  max-width: none;
+}
+
+.hero .container .right .hero_image.mobile {
+  display: none;
+}
+
+.hero .container .right .rendez-vous_icon {
+  position: absolute;
+  bottom: -150px;
+  right: -100px;
+  width: 90px;
+}
+
+.hero .search-bar {
+  margin-top: 200px;
+  padding: 0px 50px;
+  background-color: #ffffff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  position: relative;
+}
+
+.hero .search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  border-radius: 0px;
+  padding: 10px 0px;
+  font-size: 15px;
+  border-bottom: 1px solid #d8d8d8;
+  color: #020202;
+  width: 100%;
+}
+
+.hero .search-bar input::placeholder {
+  color: #020202;
+  width: 90%;
+}
+
+.hero .search-bar .search_bar_icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .hero .slogen {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .hero .container .left {
+    width: 80%;
+    margin-top: 100px;
+  }
+
+  .hero .container .left h1 {
+    font-size: 40px;
+  }
+
+  .hero .container .left h3 {
+    font-size: 18px;
+  }
+
+  .hero .container .right .hero_image {
+    position: absolute;
+    top: 0px;
+    right: -80px;
+    height: 110%;
+  }
+
+  .hero .container .right .rendez-vous_icon {
+    position: absolute;
+    bottom: -50px;
+    right: 0px;
+  }
+
+  .hero .search-bar {
+    margin-top: 100px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero .slogen {
+    display: none;
+  }
+
+  .hero .container .left {
+    width: 100%;
+  }
+
+  .hero .container .right {
+    width: 0%;
+  }
+
+  .hero .container .right .hero_image {
+    position: absolute;
+    top: 60px;
+    right: -100px;
+    height: 81%;
+  }
+
+  .hero .container .right .rendez-vous_icon {
+    display: none;
+  }
+
+  .hero .search-bar {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column;
+    width: 100%;
+    margin-inline: 0px;
+  }
+
+  .hero .container .left {
+    margin-top: 10px;
+  }
+
+  .hero .container .right {
+    position: relative;
+    width: 100%;
+  }
+
+  .hero .container .right .hero_image {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    height: unset;
+    left: 0px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero .container .left {
+    margin-top: 30px;
+  }
+
+  .hero .container .left h1 {
+    font-size: 37px;
+    line-height: 1.2;
+  }
+
+  .hero .container .left h3 {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 40px;
+  }
+
+  .hero .container .left h3::after {
+    bottom: -20px;
+  }
+
+  .hero .container .left p {
+    padding-right: 0px;
+  }
+
+  .hero .container .left .btn {
+    display: none;
+  }
+
+  .hero .container .left .btn.mobile {
+    display: inline-block;
+  }
+
+  .hero .container .right .hero_image {
+    display: none;
+  }
+
+  .hero .container .right .hero_image.mobile {
+    display: block;
+  }
+
+  .hero .search-bar {
+    height: 66px;
+  }
+
+  .hero .search-bar input {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.introduction .intro {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.introduction .intro .image_container {
+  width: 50%;
+  position: relative;
+}
+
+.introduction .intro .image_container img {
+  width: 100%;
+}
+
+.introduction .intro .image_container::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 140%;
+  background-color: #B40400;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.introduction .intro .text_container {
+  width: 50%;
+  padding-left: 50px;
+}
+
+.introduction .intro .text_container h2 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 45px;
+  margin-bottom: 15px;
+}
+
+.introduction .intro .text_container h4 {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 25px;
+  padding-bottom: 15px;
+}
+
+.introduction .intro .text_container p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+.introduction .intro .text_container .btn {
+  margin-bottom: 0px;
+}
+
+.introduction .intro.intro2 {
+  margin-bottom: 0px;
+  margin-top: 75px;
+}
+
+.introduction .intro.intro2 .text_container {
+  width: 50%;
+  padding: 20px 50px 20px 0px;
+}
+
+.introduction .intro.intro2 .image_container::after {
+  top: 55%;
+}
+
+@media (max-width: 1200px) {
+  .introduction .intro .text_container h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .introduction .intro .text_container h4 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 992px) {
+  .introduction .intro {
+    flex-direction: column-reverse;
+    margin-bottom: 0px;
+  }
+
+  .introduction .intro .text_container {
+    width: 100%;
+    padding-left: 0px;
+    padding: 20px;
+  }
+
+  .introduction .intro .text_container h2 {
+    font-size: 26px;
+  }
+
+  .introduction .intro .image_container {
+    width: 100%;
+  }
+
+  .introduction .intro .image_container::after {
+    content: unset;
+  }
+
+  .introduction .intro.intro2 {
+    flex-direction: column;
+    margin-top: 0px;
+  }
+
+  .introduction .intro.intro2 .text_container {
+    padding-left: 0px;
+    width: 100%;
+  }
+
+  .introduction .intro.intro2 .image_container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .introduction .intro .text_container {
+    padding: 20px 0px;
+  }
+
+  .introduction .intro .text_container h2 {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  .introduction .intro .text_container h4 {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .introduction .intro .text_container p {
+    line-height: 30px;
+  }
+
+  .introduction .intro .text_container .btn {
+    margin-bottom: 20px;
+  }
+
+  .introduction .intro .image_container img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+  }
+
+  .introduction .intro.intro2 .text_container {
+    padding: 20px 0px;
+  }
+}
+
+.prise_en_charge {
+  background-color: #ffffff;
+}
+
+.prise_en_charge p {
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 30px;
+  text-align: center;
+  color: #020202;
+  text-transform: uppercase;
+  line-height: 45px;
+}
+
+@media (max-width: 992px) {
+  .prise_en_charge p {
+    width: 90%;
+    margin: 0px auto;
+  }
+
+  .prise_en_charge p br {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .prise_en_charge p {
+    width: 100%;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .prise_en_charge p {
+    width: 90%;
+  }
+}
+
+.chirurgies_reparatrices {
+  padding: 100px 0px;
+  position: relative;
+}
+
+.chirurgies_reparatrices::after {
+  content: "";
+  background-image: url("../../uploads/2026/08/big_plus.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+  width: 520px;
+  height: 520px;
+  position: absolute;
+  top: 26px;
+  left: -90px;
+  z-index: -1;
+}
+
+.chirurgies_reparatrices h2 {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.chirurgies_reparatrices .desc {
+  margin-left: 30%;
+  width: 60%;
+  line-height: 25px;
+}
+
+.chirurgies_reparatrices .desc b {
+  font-weight: 800;
+}
+
+.chirurgies_reparatrices .btn {
+  margin-left: 30%;
+}
+
+.chirurgies_reparatrices .cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  position: relative;
+}
+
+.chirurgies_reparatrices .cards .card {
+  position: relative;
+  overflow: hidden;
+}
+
+.chirurgies_reparatrices .cards .card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.chirurgies_reparatrices .cards .card .content {
+  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 40px 0px;
+  background-color: rgba(240, 248, 255, 0.215);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.chirurgies_reparatrices .cards .card .content .text_content {
+  transform: translateY(100%);
+  transition: all 1s ease;
+}
+
+.chirurgies_reparatrices .cards .card .content h3 {
+  font-size: 23px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.chirurgies_reparatrices .cards .card .content h3::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 4px;
+  background-color: #B40400;
+  bottom: -30px;
+  left: 0;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.chirurgies_reparatrices .cards .card .content p {
+  font-size: 14px;
+  line-height: 24px;
+  width: fit-content;
+  margin: 30px auto;
+  padding: 0px 40px;
+  /* Core Animation Properties */
+  opacity: 0;
+  /* Start 20px lower than normal position */
+  transition: all 1s ease;
+}
+
+.chirurgies_reparatrices .cards .card .content .btn_card {
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 25px;
+  letter-spacing: 0.1em;
+  position: relative;
+  width: fit-content;
+  margin: 0px auto;
+  opacity: 0.2;
+  transition: all 1s ease;
+}
+
+.chirurgies_reparatrices .cards .card .content .btn_card::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 4px;
+  background-color: #B40400;
+  bottom: -30px;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.chirurgies_reparatrices .cards .card:hover {
+  overflow: visible;
+}
+
+.chirurgies_reparatrices .cards .card:hover .text_content {
+  transform: translateY(0);
+}
+
+.chirurgies_reparatrices .cards .card:hover .content {
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all 1s ease;
+}
+
+.chirurgies_reparatrices .cards .card:hover .content p {
+  opacity: 1;
+}
+
+.chirurgies_reparatrices .cards .card:hover .content .btn_card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chirurgies_reparatrices .cards .card:hover::after {
+  content: "";
+  background-image: url("../../uploads/2026/08/small_plus.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  transform: translate(-50%, -50%);
+}
+
+.chirurgies_reparatrices .cards .card:hover::before {
+  content: "";
+  background-image: url("../../uploads/2026/08/small_plus.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  transform: translate(50%, 50%);
+}
+
+.chirurgies_reparatrices .slider-dots {
+  display: none;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.chirurgies_reparatrices .slider-dots .slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #580200;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.chirurgies_reparatrices .slider-dots .slider-dot.active {
+  background-color: #B40400;
+  position: relative;
+}
+
+.chirurgies_reparatrices .slider-dots .slider-dot.active::after {
+  width: 20px;
+  height: 20px;
+  content: "";
+  position: absolute;
+  bottom: 53%;
+  right: 50%;
+  border-radius: 50%;
+  border: #B40400 2px solid;
+  transform: translate(50%, 50%);
+}
+
+@media (max-width: 1200px) {
+  .chirurgies_reparatrices h2 {
+    font-size: 50px;
+  }
+
+  .chirurgies_reparatrices .cards .card .content p {
+    padding: 0px 12px;
+    margin: 16px auto;
+  }
+
+  .chirurgies_reparatrices .cards .card .content h3 {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .chirurgies_reparatrices .cards:hover .content {
+    padding: 10px 0px;
+  }
+
+  .chirurgies_reparatrices::after {
+    width: 400px;
+    height: 400px;
+    top: 60px;
+    left: -110px;
+  }
+}
+
+@media (max-width: 992px) {
+  .chirurgies_reparatrices {
+    padding: 15px 0px;
+  }
+
+  .chirurgies_reparatrices .desc {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .chirurgies_reparatrices .slider-dots {
+    display: flex;
+  }
+
+  .chirurgies_reparatrices .slider-clip {
+    overflow: hidden;
+  }
+
+  .chirurgies_reparatrices .cards {
+    flex-wrap: nowrap;
+  }
+
+  .chirurgies_reparatrices .cards .card {
+    flex: 0 0 calc(100% - 100px);
+    min-width: calc(100% - 100px);
+  }
+
+  .chirurgies_reparatrices::after {
+    width: 200px;
+    height: 200px;
+    top: 60px;
+    left: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .chirurgies_reparatrices h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .chirurgies_reparatrices .desc {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .chirurgies_reparatrices .cards .card .content .text_content {
+    transform: translateY(102%);
+  }
+
+  .chirurgies_reparatrices .cards .card:hover .text_content {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .chirurgies_reparatrices {
+    padding-bottom: 30px;
+  }
+
+  .chirurgies_reparatrices .desc {
+    text-align: center;
+  }
+
+  .chirurgies_reparatrices::after {
+    left: 65%;
+  }
+
+  .chirurgies_reparatrices .cards .card {
+    flex: 0 0 calc(100% - 50px);
+    min-width: calc(100% - 50px);
+    height: 360px;
+  }
+}
+
+.targeted_surgeries {
+  background-color: #B40400;
+  margin-bottom: -50px;
+  padding-bottom: 0px;
+  background: linear-gradient(to bottom, #B40400, #580200);
+}
+
+.targeted_surgeries h2 {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.targeted_surgeries .desc1 {
+  display: none;
+}
+
+.targeted_surgeries .content {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.targeted_surgeries .content .col {
+  flex: 1;
+}
+
+.targeted_surgeries .content .col .desc {
+  margin-top: -10px;
+  line-height: 25px;
+}
+
+.targeted_surgeries .content .col .desc b {
+  font-weight: 800;
+}
+
+.targeted_surgeries .content .col .btn {
+  padding: 19px 40px;
+  font-size: 15px;
+}
+
+.targeted_surgeries .content .col .btn::after {
+  filter: brightness(0) invert(1);
+}
+
+.targeted_surgeries .content .col .image_content {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  justify-items: center;
+  padding: 50px 0px;
+}
+
+.targeted_surgeries .content .col .image_content .image_container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.targeted_surgeries .content .col .image_content .content_text {
+  position: relative;
+  width: 55%;
+  background-color: #ffffff;
+  height: fit-content;
+  color: #020202;
+  padding: 24px 32px;
+  box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.7411764706);
+}
+
+.targeted_surgeries .content .col .image_content .content_text h4 {
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  margin: 26px 0px;
+}
+
+.targeted_surgeries .content .col .image_content .content_text p {
+  font-size: 15px;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+
+.targeted_surgeries .content .col .image_content .content_text .btn_content {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #020202;
+  border-top-left-radius: 20px;
+  color: #ffffff;
+  padding: 12px 15px;
+  font-weight: 800;
+  display: flex;
+  justify-items: center;
+  gap: 10px;
+  line-height: 1.2;
+}
+
+.targeted_surgeries .content .col .image_content .content_text .btn_content img {
+  filter: brightness(0) invert(1);
+}
+
+.targeted_surgeries .content .col.right .image_content .content_text .btn_content {
+  background-color: #B40400;
+}
+
+@media (max-width: 1200px) {
+  .targeted_surgeries h2 {
+    font-size: 50px;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text {
+    padding: 12px 16px;
+    padding-bottom: 36px;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text h4 {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 14px 0px;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 992px) {
+  .targeted_surgeries .content {
+    flex-direction: column;
+  }
+
+  .targeted_surgeries .content .col .image_content {
+    align-items: center;
+    padding: 0px 0px;
+  }
+
+  .targeted_surgeries .content .col .image_content .image_container {
+    position: relative;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text {
+    margin-left: -50px;
+  }
+
+  .targeted_surgeries .desc {
+    display: none;
+  }
+
+  .targeted_surgeries .desc1 {
+    display: block;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .targeted_surgeries .desc1 b {
+    font-weight: 800;
+  }
+
+  .targeted_surgeries .desc1 .btn::after {
+    filter: brightness(0) invert(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .targeted_surgeries {
+    width: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 30px;
+  }
+
+  .targeted_surgeries h2 {
+    font-size: 37px;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .targeted_surgeries .content .col .image_content {
+    flex-direction: column;
+  }
+
+  .targeted_surgeries .content .col .image_content .image_container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .targeted_surgeries .content .col .image_content .image_container img {
+    height: 328px;
+    width: 130%;
+    object-fit: cover;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text {
+    margin-left: 0px;
+    margin-top: -40px;
+    padding: 0px 22px;
+    padding-bottom: 40px;
+    width: 90%;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text p {
+    font-size: 15px;
+  }
+
+  .targeted_surgeries .content .col .image_content .content_text .btn_content {
+    padding: 9px 15px;
+  }
+}
+
+.last_section {
+  background-color: #020202;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(400px, 100vw);
+  height: 100vh;
+  background-color: #0b0b0b;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.mobile-menu__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu__header img {
+  max-width: 160px;
+  height: 23px;
+}
+
+.mobile-menu__close {
+  font-size: 30px;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.mobile-menu__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu__search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Gilroy", sans-serif;
+}
+
+.mobile-menu__search input::placeholder {
+  color: #8a8a8a;
+}
+
+.mobile-menu__search button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu__search button img {
+  width: 18px;
+}
+
+.mobile-menu__search--bottom {
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: none;
+}
+
+.mobile-menu__nav {
+  list-style: none;
+  padding: 8px 0;
+  flex: 1;
+  width: 100%;
+}
+
+.mobile-menu__nav li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mobile-menu__nav li>a {
+  display: block;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.mobile-menu__nav li.active>a {
+  color: #ffffff;
+}
+
+.mobile-menu__nav li .sub-menu li>a {
+  text-transform: none;
+  font-size: 14px;
+  padding: 10px 20px 10px 32px;
+  color: #8a8a8a;
+}
+
+.mobile-menu__nav li .sub-menu li.is-open>a,
+.mobile-menu__nav li .sub-menu li.is-open>.sub-toggle {
+  color: #ffffff;
+}
+
+.mobile-menu__nav li .sub-menu .sub-menu li>a {
+  padding-left: 44px;
+  font-size: 13px;
+  color: #8a8a8a;
+}
+
+.mobile-menu__nav li .sub-menu.open>li>a,
+.mobile-menu__nav li .sub-menu.open>li>.sub-toggle {
+  color: #ffffff;
+}
+
+.mobile-menu__nav li .sub-menu.open .sub-menu.open>li>a {
+  color: #ffffff;
+}
+
+.mobile-menu__nav .sub-toggle {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobile-menu__nav .sub-toggle span:first-child {
+  min-width: 0;
+}
+
+.mobile-menu__nav .sub-toggle .indicator {
+  font-size: 18px;
+  color: #8a8a8a;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.mobile-menu__nav .sub-menu .sub-toggle {
+  text-transform: none;
+  padding-left: 32px;
+}
+
+.mobile-menu__nav li.is-open>.sub-toggle {
+  color: #ffffff;
+}
+
+.mobile-menu .sub-menu {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.mobile-menu__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 2, 2, 0.6);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.mobile-menu__overlay.is-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --------------------------------------------------------------
+   Ajouts thème (non présents dans le fichier fourni) :
+   transition JS du slider mobile "chirurgies_reparatrices"
+-------------------------------------------------------------- */
+
+.chirurgies_reparatrices .cards {
+  transition: transform 0.4s ease;
+}

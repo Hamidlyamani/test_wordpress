@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dr-polle/prise-en-charge",
+	"title": "Bandeau (prise en charge)",
+	"category": "dr-polle",
+	"icon": "megaphone",
+	"description": "Bandeau .prise_en_charge : une phrase centrée avec des mots surlignés en rouge.",
+	"keywords": ["bandeau", "prise en charge"],
+	"textdomain": "dr-polle",
+	"supports": { "html": false, "multiple": false },
+	"attributes": {
+		"texte": {
+			"type": "string",
+			"default": "Prise en charge <span class=\"red\">sur-mesure</span> & accompagnement <span class=\"red\">premium</span>.<br>Retrouvez le plaisir de vous déplacer <span class=\"red\">en toute sécurité</span>."
+		}
+	},
+	"editorScript": "dr-polle-prise-en-charge-editor",
+	"render": "file:./render.php"
+}
